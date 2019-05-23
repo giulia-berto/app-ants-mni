@@ -1,0 +1,63 @@
+#!/bin/bash
+#PBS -k o
+#PBS -l nodes=1:ppn=16,walltime=01:00:00
+
+module load ants
+module unload mrtrix/0.2.12 
+module load mrtrix/3.0
+
+[ $PBS_O_WORKDIR ] && cd $PBS_O_WORKDIR
+
+tck_id=`jq -r '._inputs[0].meta.subject' config.json`
+t1_id=`jq -r '._inputs[1].meta.subject' config.json`
+mask_id=`jq -r '._inputs[2].meta.subject' config.json`
+
+echo "Check the inputs subject id"
+if [ $mask_id == null ]; then
+	if [ $tck_id == $t1_id ]; then
+		echo "Inputs subject IDs correctly inserted"
+	else
+		echo "Inputs subject IDs incorrectly inserted. Check them again."
+		exit 1
+	fi
+else
+	if [ $tck_id == $t1_id -a $tck_id == $mask_id ]; then
+		echo "Inputs subject IDs correctly inserted"
+	else
+		echo "Inputs subject IDs incorrectly inserted. Check them again."
+		exit 1
+	fi
+fi
+
+WARP_DIR=warp_dir
+OUT_DIR=track_aligned
+mkdir $WARP_DIR
+mkdir $OUT_DIR
+
+tck=`jq -r '.track' config.json`
+t1=`jq -r '.t1' config.json`
+atlas=MNI152_T1_1.25mm_brain.nii.gz
+
+echo "Computing warp to MNI space..."
+./ants_t1w_transformation.sh $t1_id $t1 MNI $atlas
+mv sub-${t1_id}_space_MNI_var-t1w_affine.txt $WARP_DIR
+mv sub-${t1_id}_space_MNI_var-t1w_warp.nii.gz $WARP_DIR
+mv sub-${t1_id}_space_MNI_var-t1w4tck_warp.nii.gz $WARP_DIR	
+
+if [ -z "$(ls -A -- "$WARP_DIR")" ]; then    
+	echo "Transformation failed."
+	exit 1
+else    
+	echo "Transformation done."
+fi		
+
+echo "Registering the tractogram to MNI space..."
+python ants_t1w_tractograms_registration.py -movID $tck_id -tck $tck -warp_dir ${WARP_DIR}
+mv track.tck $OUT_DIR 
+
+if [ -z "$(ls -A -- "$OUT_DIR")" ]; then    
+	echo "Registration failed."
+	exit 1
+else    
+	echo "Registration done."
+fi	
