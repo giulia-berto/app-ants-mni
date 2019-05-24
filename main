@@ -52,7 +52,7 @@ else
 fi		
 
 echo "Registering the tractogram to MNI space..."
-python ants_t1w_tractograms_registration.py -movID $tck_id -tck $tck -warp_dir ${WARP_DIR}
+python ants_t1w_tractogram_registration.py -movID $tck_id -tck $tck -warp_dir ${WARP_DIR}
 mv track.tck $OUT_DIR 
 
 if [ -z "$(ls -A -- "$OUT_DIR")" ]; then    
