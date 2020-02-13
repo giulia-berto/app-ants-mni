@@ -3,6 +3,7 @@
 #PBS -l nodes=1:ppn=16,walltime=01:00:00
 
 module load ants
+module load fsl/5.0.11
 module unload mrtrix/0.2.12 
 module load mrtrix/3.0
 
