@@ -32,8 +32,8 @@ fi
 
 WARP_DIR=warp_dir
 OUT_DIR=track_aligned
-mkdir $WARP_DIR
-mkdir $OUT_DIR
+mkdir -p $WARP_DIR
+mkdir -p $OUT_DIR
 
 tck=`jq -r '.track' config.json`
 t1=`jq -r '.t1' config.json`
