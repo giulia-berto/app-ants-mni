@@ -40,6 +40,9 @@ mv ${T1W_ANT_PRE}Warp.nii.gz ${T1W_ANT_PRE}warp.nii.gz
 mv ${T1W_ANT_PRE}InverseWarp.nii.gz ${T1W_ANT_PRE}invwarp.nii.gz
 mv ${T1W_ANT_PRE}Affine.txt ${T1W_ANT_PRE}affine.txt
 
+cp ${T1W_ANT_PRE}warp.nii.gz warps/warp.nii.gz
+cp ${T1W_ANT_PRE}invwarp.nii.gz warps/inverse-warp.nii.gz
+
 #mv ${T1W_ANT_PRE}1Warp.nii.gz ${T1W_ANT_PRE}warp.nii.gz
 #mv ${T1W_ANT_PRE}1InverseWarp.nii.gz ${T1W_ANT_PRE}invwarp.nii.gz
 #mv ${T1W_ANT_PRE}0GenericAffine.mat ${T1W_ANT_PRE}affine.mat
