@@ -1,0 +1,10 @@
+{
+    "track_aligned": {
+        "meta": {
+            "Space": "MNI152Lin"
+        },
+        "tag": [
+            "space-MNI152Lin"
+        ]
+    }
+}
