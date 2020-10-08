@@ -43,7 +43,7 @@ else
 	    	$t1 \
 	    	t1_aligned/t1.nii.gz \
 	    	warp_dir/space_MNI_var-t1w_warp.nii.gz \
-	    	warp_dir}/space_MNI_var-t1w_affine.nii.txt  --use-NN
+	    	warp_dir/space_MNI_var-t1w_affine.nii.txt  --use-NN
 
 	if [ -z "$(ls -A -- t1_aligned)" ]; then    
 		echo "T1 registration failed."

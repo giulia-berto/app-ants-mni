@@ -31,7 +31,7 @@ mkdir -p t1_aligned
 tck=`jq -r '.track' config.json`
 t1=`jq -r '.t1' config.json`
 
-echo "Computing warp to MNI space..."
+echo "Computing warp and registration to MNI space..."
 singularity exec -e docker://giuliaberto/ants2-mrtrix3-fsl6:1.1 ./run_registration.sh $t1 $tck
 
 ret=$?
