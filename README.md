@@ -18,3 +18,38 @@ We kindly ask that you acknowledge the funding below in your publications and co
 ### Citation
 We kindly ask that you cite the following article when publishing papers and code using this code: \
 Avants, B.B., Epstein, C.L., Grossman, M., Gee, J.C., 2008. [Symmetric diffeomorphic image registration with cross-correlation: evaluating automated labeling of elderly and neurodegenerative brain.](https://www.sciencedirect.com/science/article/pii/S1361841507000606) Med. Image Anal. 12 (1), 26–41. doi: 10.1016/j.media.2007.06.004.
+
+## Running the app
+### On [Brainlife.io](http://brainlife.io/) 
+You can submit this App online at https://doi.org/10.25663/brainlife.app.202 via the “Execute” tab.
+
+Inputs: \
+A .tck file and a T1 image, in the same anatomical space. Optionally, you can provide also a brain mask, in the same anatomical space. If the mask is not provided, the Brain Extraction Tool (BET) algorithm will be used for brain extraction.
+
+Output: \
+The main output of this App is the .tck file in MNI space. Other outputs are (i) the warp and the inverse-warp used for the registration, and (ii) the T1 in MNI space.
+
+### Running locally
+1. git clone this repo.
+2. Inside the cloned directory, create `config.json` with something like the following content with paths to your input files:
+```
+{
+    "track": "./track.tck",
+    "t1": "./t1.nii.gz",
+    "mask": "./mask.nii.gz"
+}
+```
+3. Launch the App by executing `main`.
+```
+./main
+```
+
+#### Dependencies
+This App only requires [singularity](https://sylabs.io/singularity/) to run. If you don't have singularity, you will need to install following dependencies:
+* ANTs >=2: https://github.com/ANTsX/ANTs
+* FSL >=5: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+* MRtrix >=3: https://www.mrtrix.org/
+
+#### MIT Copyright (c) 2020 Bruno Kessler Foundation (FBK)
+
+
