@@ -17,4 +17,4 @@ We kindly ask that you acknowledge the funding below in your publications and co
 
 ### Citation
 We kindly ask that you cite the following article when publishing papers and code using this code: \
-Avants, B.B., Epstein, C.L., Grossman, M., Gee, J.C., 2008. [Symmetric diffeomorphic image registration with cross-correlation: evaluating automated labeling of elderly and neurodegenerative brain.](10.1016/j.media.2007.06.004) Med. Image Anal. 12 (1), 26–41. doi: 10.1016/j.media.2007.06.004.
+Avants, B.B., Epstein, C.L., Grossman, M., Gee, J.C., 2008. [Symmetric diffeomorphic image registration with cross-correlation: evaluating automated labeling of elderly and neurodegenerative brain.](https://www.sciencedirect.com/science/article/pii/S1361841507000606) Med. Image Anal. 12 (1), 26–41. doi: 10.1016/j.media.2007.06.004.
