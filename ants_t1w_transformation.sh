@@ -41,6 +41,7 @@ mv ${T1W_ANT_PRE}Affine.txt ${T1W_ANT_PRE}affine.txt
 
 cp ${T1W_ANT_PRE}warp.nii.gz warps/warp.nii.gz
 cp ${T1W_ANT_PRE}invwarp.nii.gz warps/inverse-warp.nii.gz
+cp ${T1W_ANT_PRE}affine.txt warps/affine.txt
 
 #------------------------------------------------------------------------------
 # Convert the warp for tck
